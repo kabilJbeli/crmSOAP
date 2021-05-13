@@ -1,4 +1,14 @@
 eclipse.preferences.version=1
+encoding//src/org/oorsprong/www/websamples_countryinfo/CountryInfoService.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/CountryInfoServiceLocator.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/CountryInfoServiceSoapBindingStub.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/CountryInfoServiceSoapType.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/TContinent.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/TCountryCodeAndName.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/TCountryCodeAndNameGroupedByContinent.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/TCountryInfo.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/TCurrency.java=UTF-8
+encoding//src/org/oorsprong/www/websamples_countryinfo/TLanguage.java=UTF-8
 encoding//src/org/tempuri/ConvertDataTableColumn.java=UTF-8
 encoding//src/org/tempuri/ConvertDataTableColumnDs.java=UTF-8
 encoding//src/org/tempuri/ConvertDataTableColumnResponse.java=UTF-8

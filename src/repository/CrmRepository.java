@@ -40,4 +40,12 @@ public class CrmRepository {
 	}
 	
 	
+	public Client getClientByID(int id) {		
+		getEntityManager().getTransaction().begin();
+	Client client =	getEntityManager().find(Client.class, id);	
+		getEntityManager().getTransaction().commit();
+		return client;
+	}
+	
+	
 }
