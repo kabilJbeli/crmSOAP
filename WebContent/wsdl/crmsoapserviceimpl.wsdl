@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CrmSoapServiceImplService" targetNamespace="http://serviceImpl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://serviceImpl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://serviceImpl/" schemaLocation="crmsoapserviceimpl_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="GetFinalQuoteResponse">
+    <wsdl:part name="parameters" element="tns:GetFinalQuoteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFinalQuote">
+    <wsdl:part name="parameters" element="tns:GetFinalQuote">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CrmSoapServiceImpl">
+    <wsdl:operation name="GetFinalQuote">
+      <wsdl:input name="GetFinalQuote" message="tns:GetFinalQuote">
+    </wsdl:input>
+      <wsdl:output name="GetFinalQuoteResponse" message="tns:GetFinalQuoteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CrmSoapServiceImplServiceSoapBinding" type="tns:CrmSoapServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetFinalQuote">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="GetFinalQuote">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetFinalQuoteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CrmSoapServiceImplService">
+    <wsdl:port name="CrmSoapServiceImplPort" binding="tns:CrmSoapServiceImplServiceSoapBinding">
+      <soap:address location="http://localhost:8080/crmSOAP/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

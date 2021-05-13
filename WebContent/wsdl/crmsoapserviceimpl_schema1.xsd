@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:tns="http://serviceImpl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://serviceImpl/" version="1.0">
+<xs:element name="GetFinalQuote" type="tns:GetFinalQuote"/>
+<xs:element name="GetFinalQuoteResponse" type="tns:GetFinalQuoteResponse"/>
+<xs:complexType name="GetFinalQuote">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="GetFinalQuoteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseModel"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="responseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="convertedDevise" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="quote" type="tns:quote"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="quote">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="client" type="tns:client"/>
+      <xs:element name="idquote" type="xs:int"/>
+      <xs:element minOccurs="0" name="productprice" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="prooductname" type="xs:string"/>
+      <xs:element minOccurs="0" name="quote" type="xs:decimal"/>
+      <xs:element name="totalitems" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="client">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="adress" type="xs:string"/>
+      <xs:element minOccurs="0" name="clientname" type="xs:string"/>
+      <xs:element name="idclient" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="quotes" nillable="true" type="tns:quote"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
