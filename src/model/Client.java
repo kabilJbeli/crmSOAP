@@ -2,6 +2,11 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlAccessType;
+
 import java.util.List;
 
 
@@ -11,23 +16,25 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Client.findAll", query="SELECT c FROM Client c")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	private int idclient;
-
 	private String adress;
-
 	private String clientname;
 
 	//bi-directional many-to-one association to Quote
+	
 	@OneToMany(mappedBy="client")
+	@XmlTransient
 	private List<Quote> quotes;
 	private String countrycode;
 	private String telephonenumber;
-
+	@XmlTransient
 	public String getTelephonenumber() {
 		return telephonenumber;
 	}
@@ -35,7 +42,7 @@ public class Client implements Serializable {
 	public void setTelephonenumber(String telephonenumber) {
 		this.telephonenumber = telephonenumber;
 	}
-
+	@XmlTransient
 	public String getCountrycode() {
 		return countrycode;
 	}
@@ -46,7 +53,7 @@ public class Client implements Serializable {
 
 	public Client() {
 	}
-
+	@XmlTransient
 	public int getIdclient() {
 		return this.idclient;
 	}
@@ -54,7 +61,7 @@ public class Client implements Serializable {
 	public void setIdclient(int idclient) {
 		this.idclient = idclient;
 	}
-
+	@XmlTransient
 	public String getAdress() {
 		return this.adress;
 	}
@@ -62,7 +69,7 @@ public class Client implements Serializable {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-
+	@XmlTransient
 	public String getClientname() {
 		return this.clientname;
 	}
@@ -70,7 +77,7 @@ public class Client implements Serializable {
 	public void setClientname(String clientname) {
 		this.clientname = clientname;
 	}
-
+	@XmlTransient
 	public List<Quote> getQuotes() {
 		return this.quotes;
 	}

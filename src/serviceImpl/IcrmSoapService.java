@@ -1,10 +1,9 @@
  package serviceImpl;
 
+import model.Quote;
 import model.ReponseModelContryCode;
-import model.ResponseModel;
 
 public interface IcrmSoapService {
-	public ResponseModel GetFinalQuote(int id);
+	public Quote GetFinalQuote(int id);
 	public ReponseModelContryCode GetClient(int id);
-
 }

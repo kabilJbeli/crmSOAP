@@ -1,6 +1,5 @@
 package model;
 
-
 public class ReponseModelContryCode {
 	Client client;
 	String targetcode;
@@ -8,7 +7,7 @@ public class ReponseModelContryCode {
 	public ReponseModelContryCode() {
 		super();
 	}
-
+	
 	public Client getClient() {
 		return client;
 	}
@@ -16,7 +15,6 @@ public class ReponseModelContryCode {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
 	public String getTargetcode() {
 		return targetcode;
 	}

@@ -1,12 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="CrmSoapServiceImplService" targetNamespace="http://serviceImpl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://serviceImpl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:definitions name="CrmSoapServiceImplService" targetNamespace="http://serviceImpl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://serviceImpl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
   <wsdl:types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema">
-  <import namespace="http://serviceImpl/" schemaLocation="crmsoapserviceimpl_schema1.xsd"/>
-</schema>
+    <xs:schema targetNamespace="http://serviceImpl/" version="1.0" xmlns:tns="http://serviceImpl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="GetClient" type="tns:GetClient"/>
+
+  <xs:element name="GetClientResponse" type="tns:GetClientResponse"/>
+
+  <xs:element name="GetFinalQuote" type="tns:GetFinalQuote"/>
+
+  <xs:element name="GetFinalQuoteResponse" type="tns:GetFinalQuoteResponse"/>
+
+  <xs:element name="client" type="tns:client"/>
+
+  <xs:element name="quote" type="tns:quote"/>
+
+  <xs:complexType name="GetClient">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetClientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:reponseModelContryCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reponseModelContryCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:client"/>
+      <xs:element minOccurs="0" name="targetcode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="client">
+    <xs:sequence>
+      <xs:element name="idclient" type="xs:int"/>
+      <xs:element minOccurs="0" name="adress" type="xs:string"/>
+      <xs:element minOccurs="0" name="clientname" type="xs:string"/>
+      <xs:element minOccurs="0" name="countrycode" type="xs:string"/>
+      <xs:element minOccurs="0" name="telephonenumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetFinalQuote">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetFinalQuoteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:quote"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="quote">
+    <xs:sequence>
+      <xs:element name="idquote" type="xs:int"/>
+      <xs:element minOccurs="0" name="productprice" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="prooductname" type="xs:string"/>
+      <xs:element minOccurs="0" name="deviseCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="quote" type="xs:decimal"/>
+      <xs:element name="totalitems" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
   </wsdl:types>
+  <wsdl:message name="GetClient">
+    <wsdl:part name="parameters" element="tns:GetClient">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="GetFinalQuoteResponse">
     <wsdl:part name="parameters" element="tns:GetFinalQuoteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetClientResponse">
+    <wsdl:part name="parameters" element="tns:GetClientResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="GetFinalQuote">
@@ -14,6 +86,12 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="CrmSoapServiceImpl">
+    <wsdl:operation name="GetClient">
+      <wsdl:input name="GetClient" message="tns:GetClient">
+    </wsdl:input>
+      <wsdl:output name="GetClientResponse" message="tns:GetClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFinalQuote">
       <wsdl:input name="GetFinalQuote" message="tns:GetFinalQuote">
     </wsdl:input>
@@ -22,20 +100,29 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CrmSoapServiceImplServiceSoapBinding" type="tns:CrmSoapServiceImpl">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetClient">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="GetClient">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetClientResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFinalQuote">
-      <soap:operation soapAction="" style="document"/>
+      <soap12:operation soapAction="" style="document"/>
       <wsdl:input name="GetFinalQuote">
-        <soap:body use="literal"/>
+        <soap12:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="GetFinalQuoteResponse">
-        <soap:body use="literal"/>
+        <soap12:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CrmSoapServiceImplService">
     <wsdl:port name="CrmSoapServiceImplPort" binding="tns:CrmSoapServiceImplServiceSoapBinding">
-      <soap:address location="http://localhost:8080/crmSOAP/services"/>
+      <soap12:address location="http://localhost:8080/crmSOAP/services"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -3,6 +3,7 @@ package repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.xml.bind.annotation.XmlTransient;
 
 import model.Client;
 import model.Quote;
@@ -23,7 +24,6 @@ public class CrmRepository {
 		getEntityManager().getTransaction().commit();
 		return getQuoteByID(quote.getIdquote());
 	}
-	
 	public  Client generateClient(Client client) {
 		getEntityManager().getTransaction().begin();
 		getEntityManager().persist(client);		
@@ -31,14 +31,12 @@ public class CrmRepository {
 		return client;
 	}
 		
-	
 	public Quote getQuoteByID(int id) {		
 		getEntityManager().getTransaction().begin();
 	Quote quote =	getEntityManager().find(Quote.class, id);	
 		getEntityManager().getTransaction().commit();
 		return quote;
 	}
-	
 	
 	public Client getClientByID(int id) {		
 		getEntityManager().getTransaction().begin();
