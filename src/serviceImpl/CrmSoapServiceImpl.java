@@ -2,6 +2,7 @@ package serviceImpl;
 
 import java.math.BigDecimal;
 import java.rmi.RemoteException;
+import java.util.List;
 
 import javax.jws.WebService;
 
@@ -40,6 +41,11 @@ public class CrmSoapServiceImpl implements IcrmSoapService {
 			e.printStackTrace();
 		}
 		return responseModel;
+	}
+	@Override
+	public List<Object> VIPCustomer() {
+		// TODO Auto-generated method stub
+		return repository.getVIPCustomer();
 	}
 	
 	

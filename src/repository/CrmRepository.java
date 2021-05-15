@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -43,6 +45,15 @@ public class CrmRepository {
 	Client client =	getEntityManager().find(Client.class, id);	
 		getEntityManager().getTransaction().commit();
 		return client;
+	}
+	
+	public List<Object> getVIPCustomer() {		
+		getEntityManager().getTransaction().begin();
+		List<Object> list =	getEntityManager().createNamedQuery("select  c.IDCLIENT, c.CLIENTNAME, sum(q.QUOTE)"
+			+ "from quote q inner join client c on (c.IDCLIENT = q.idclient)"
+			+ "group by c.IDCLIENT").getResultList();
+		getEntityManager().getTransaction().commit();
+		return list;
 	}
 	
 	
